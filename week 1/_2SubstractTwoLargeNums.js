@@ -1,22 +1,20 @@
-// import {addLargeNums} from './_1AddTwoLargeNums.js';
+const add = require('./_1AddTwoLargeNums');
 var subLargeNums = (num1, num2) => {
-    let negative, positive;
+    let positive, negative;
     if(num1[0] === "-" && num2[0] === "-"){ 
         return "-" + addLargeNums(num1, num2);
-    }else{
-        if(num1[0] !== '-' && num2[0] === '-'){
-            positive = num1;
-            negative = num2;
-        }else{
-            positive = num2;
-            negative = num1;
-        }
-         
     }
-
-    negative = negative.substring(1);
-
-    
+    if(num1[0] === '-'){ 
+        num1 = num1.substring(1);
+        positive = num2;
+        negative = num1;
+    }
+    if(num2[0] === '-') {
+        num2 = num2.substring(1);
+        positive = num1;
+        negative = num2;
+    }
+ 
     // add leading zeros to make the lengths similar
     positive = positive.split("");
     negative = negative.split("");
@@ -27,32 +25,16 @@ var subLargeNums = (num1, num2) => {
     }else{
         positive = "0".repeat(len-positive.length) + positive.join(""); 
         positive = positive.split("");
-    }
-    const sign = positive.length >= negative.length ? '+' : '-'; 
-    let temp;
-    if(sign === '-'){
-        temp = negative;
-        negative = positive;
-        positive = temp;
-    }
-    
-    let carry = 0, sub = 0, total = "";
-    for(i=len-1; i>=0; i--){
-        sub = Number(positive[i]) - Number(negative[i]) + carry;
-        carry = 0;
-        if(Number(positive[i]) < Number(negative[i])){
-            sub += 10 + carry;
-            carry = -1;
-        }
-        total = sub.toString() + total;
-    }
+    } 
 
-    if(sign === '-'){
-        total = "-" + total;
+    let total = 0, digit = 1, sum = 0;
+    for(i=len-1; i>=0; i--, digit*=10){
+        sum = ((Number(positive[i]) - Number(negative[i])) * digit);
+        total += sum;
     }
-    return total;
+    return total.toString();
 }
 
 
-console.log(subLargeNums("1", "-44"))
+
 

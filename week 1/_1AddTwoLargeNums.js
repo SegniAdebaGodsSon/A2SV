@@ -27,6 +27,4 @@ var addLargeNums = (num1, num2) => {
     return total;
 
 }
-console.log(addLargeNums("144", "5565896"));
-
-export {addLargeNums}
+module.exports = {addLargeNums}
