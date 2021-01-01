@@ -29,25 +29,27 @@ let multiply = (num1, num2) => {
     l1 = num1.length;
     l2 = num2.length;
 
-    num2 = "1".repeat(l1-l2) + num2;
 
     // change the numbers to arrays
     num1 = num1.split("");
     num2 = num2.split("");
     let total = "0", carry = 0;
-    for(i=l1-1; i>=0; i--){
-        let mult;
+    for(let i=l2-1; i>=0; i--){
+        let mult, line = "";
         for(j=l1-1; j>=0; j--){
             mult = Number(num2[i]) * Number(num1[j]) + carry;
             carry = ~~(mult/10);
             mult %= 10;
             mult = mult.toString();
-            mult = mult.concat("0".repeat(l1-i));
+            line = mult + line;
+             
         }
-        total = add.addLargeNums(total, mult)
+        if(carry !== 0) carry.toString() + line;
+        line = line.concat("0".repeat(l2-i-1));
+        total = add.addLargeNums(total, line)
     }
 
     return total;
 }
 
-console.log(multiply("1", "3"))
+console.log(multiply("11","12" ));

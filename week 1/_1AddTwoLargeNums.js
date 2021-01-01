@@ -13,7 +13,7 @@ var addLargeNums = (num1, num2) => {
     let carry = 0, total = "";
     
 
-    for(i=len-1; i>=0; i--){
+    for(let i=len-1; i>=0; i--){
         let sum = Number(num1[i]) + Number(num2[i]) + carry;
         carry = ~~(sum/10);
         sum = sum%10;
