@@ -1,4 +1,4 @@
-const add = require('../week 1/_1AddTwoLargeNums');
+const add = require('./_1AddTwoLargeNums');
 let isSmaller = (num1, num2) => {
     l1 = num1.length;
     l2 = num2.length;
