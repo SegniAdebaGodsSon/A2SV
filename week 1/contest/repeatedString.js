@@ -1,21 +1,19 @@
 // Complete the repeatedString function below.
 function repeatedString(s, n) {
-    s = s.split('');
-    let newStr = "";
-    for(let i=0; newStr.length<n; i++){
-        newStr += s[i];
-        if(i===s.length-1) 
-            i = -1;
+    let countS = (s) => {
+        let count = 0;
+        s.split("").forEach(element => count++);
     }
-    let count = 0;
-    newStr = newStr.split("");
-    for(let i=0; i<n; i++){
-        if(newStr[i] === 'a'){
-            count++;
-        }
-    }
-    return count;
+
+   let sLength = countS(s);
+   let rem = sLength % n;
+   let rep = ~~(sLength/n);
+   sLength *= rep;
+
+   for(let i=0; i<rem; i++){
+       
+   }
 }
 
 
-console.log(repeatedString('aba', 10))
+console.log(repeatedString('aba', 100))

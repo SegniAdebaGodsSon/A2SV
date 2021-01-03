@@ -1,12 +1,7 @@
 let triangleTwo = (size) => {
-    let line = 1,space = size, ans = "";
-    while(line <= size && space >= 0){
-        ans += (" ".repeat(space));
-        ans += ("*".repeat(line));
-        console.log(ans)
-        line++;
-        space--;
+    let line = 1,space = size-1;
+    for(let i = 1; line <= size; i+=2, line++, space--){
+        console.log(" ".repeat(space).concat("*".repeat(i)));
     }
 }
-
-triangleTwo(5);
+triangleTwo(6);

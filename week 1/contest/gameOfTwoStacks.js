@@ -28,5 +28,3 @@ function twoStacks(x, a, b) {
    return count-1;
 }
 
-
-console.log(twoStacks(10,[4,2,4,6,1], [2,1,8,5]))
