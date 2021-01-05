@@ -60,4 +60,4 @@ function twoStacks(x, a, b){
 let a1 = "4 1 5 1".split(" ").map(e => Number(e));
 let a2 = "2 1 0 5 5".split(" ").map(e => Number(e));
 
-console.log(twoStacks(14, a1, a2)) // 7
+console.log(twoStacks(14, a1, a2)) // 6
