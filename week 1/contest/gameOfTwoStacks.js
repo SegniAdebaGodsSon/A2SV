@@ -47,8 +47,8 @@ function twoStacks(x, a, b){
     while(true) {
         if(i == 0) break;
         sum -= a[--i];
-        
-        for(; j < b.length; j++) {
+
+        for(; j<b.length; j++) {
             if(sum + b[j] > x) { break; }
             sum += b[j];
         }
