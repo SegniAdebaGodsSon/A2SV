@@ -23,7 +23,7 @@ let countSortObj = (arr) => {
     }
 
     let maxPrice = getMaxPrice(arr);
-    let tempArr = fillArray(maxPrice+1);
+    let tempArr = fillArray(maxPrice+1);  // you can use [].fill().map(new Array())
     let finalArr = [];
 
     for (let i = 0; i < arr.length; i++) {        // populate the temp array
