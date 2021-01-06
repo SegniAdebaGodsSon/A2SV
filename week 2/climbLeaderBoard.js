@@ -7,7 +7,6 @@ function climbingLeaderboard(scores, alice) {
             rank++;
         }
     }
-
     for(let i=0; i<alice.length; i++){
         if(ranks.has(alice[i])){
             aliceRanks.push(ranks.get(alice[i]));
