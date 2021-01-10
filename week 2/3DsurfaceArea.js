@@ -1,4 +1,17 @@
+
+/**
+ * link: https://www.hackerrank.com/challenges/3d-surface-area/problem
+ * 
+ * solution 1
+ * TC - O(n*m) worst case, n*m is the dimension of the matrix
+ *      O(n*m) for transposing, O(n*m) to calculate front/back and sides surface areas
+ * 
+ * @param {number[]} A
+ * @return {number}
+ */
+
 // Complete the surfaceArea function below.
+// solution 1
 function surfaceArea(A) {
     let transposeArray = function(A){
         let arr = [];
