@@ -3,15 +3,22 @@
  * 
  * Solution 1 
  * TC - O(n^2), n is the length the @param {String} S
- *      O(n): adding unique chars in the @param {String} S to a hash/Map to track each charachters' count in a hashMap    
- *      O(n): getting the list of keys
- *      O(nlogn): to sort the keys based on repetition
- *      O(n*m): - n is the number of unique characters in the @param {String} S and m is their counts - placing each element in non-adjacent
- *              indexes in an array 
- *      O(n): Array.join('') method ??? not sure
+ *      O(n)    - adding unique chars in the @param {String} S to a hash/Map to track each charachters' count in a hashMap    
+ *      O(n)    - getting the list of keys
+ *      O(nlogn)- to sort the keys based on repetition
+ *      O(n*m)  - n is the number of unique characters in the @param {String} S and m is their counts - placing each element in non-adjacent
+ *                indexes in an array 
+ *      O(n)    - Array.join('') method ??? not sure
  * 
  * Solution 2
- * TC - 
+ * TC - O(nlogn), n is the length the @param {String} S
+ *      O(n)    - populate the hashMap with the characters in @param S and their corresponding counts 
+ *      O(n)    - populate a new array with tuples of values and count - [value, count] 
+ *      O(nlogn)- sort the tuples based on theirs counts 
+ *      O(n)    - append the values of the tuples starting from the most occured char in their proper places
+ *      O(nlogn)- another sorting of tuples based on the counts of the sub-strings
+ * 
+ * 
  * @param {string} S
  * @return {string}
  */
@@ -37,7 +44,7 @@ var reorganizeString1 = function(S) {
     return result.join('');
 };
 
-// Solution 2 - PQ
+// Solution 2 
 var reorganizeString = function(S){
     let hash = new Map(), pq = [];
     for(let s of S) hash.has(s) ? hash.set(s, hash.get(s)+1) : hash.set(s, 1);      // add each characters to a map with it's count
@@ -65,4 +72,4 @@ var reorganizeString = function(S){
 }
 
 
-console.log(reorganizeString("aab"));
+console.log(reorganizeString("aaba"));
