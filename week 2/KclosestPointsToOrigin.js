@@ -1,4 +1,26 @@
 /**
+ * link: https://leetcode.com/problems/k-closest-points-to-origin/
+ * 
+ * Solution 1 
+ * TC - O(n^2) - n is the length of the @param {number[][]} points array
+ *      O(n)    - getting the max distance
+ *      O(n)    - populating the counting sort array with the indexes as values and values as counts
+ *      O(n^2)  - find the first K arrays from the sorted 2D array
+ * 
+ *
+ * Solution 2 
+ * TC - O(nlogn) - n is the size of the @param {number[][]} points array
+ *      O(n)     - populate a new array with all the  @param {number[][]} points elements' distances from (0, 0), origin
+ *      O(nlogn) - sort the array with the distances
+ *      O(n)     - iterate through the whole @param points to check if it's in the first @param K elements of the distances' array
+ * 
+ *
+ * Solution 3
+ * TC - O(nlogn) - n is the size of the @param {number[][]} points array
+ *      O(nlogn) - sorting the 2D array with custom comparison in an non decreasing order
+ *      O(n)     - JS slice operation
+ * 
+ *  
  * @param {number[][]} points
  * @param {number} K
  * @return {number[][]}
