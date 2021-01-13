@@ -1,3 +1,11 @@
+/**
+ * Solution 1
+ * TC - O(n), n is the length of the array
+ *      O(n) -  checking if a subArray is a non-decreasing array
+ *      O(n) -  slicing an array
+ * @param {number} nums 
+ */
+
 let checkPossibility = (nums) => {
     let checkNonDec = (subArr) => {
         for(let i=0; i<subArr.length-1; i++){
