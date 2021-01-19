@@ -3,16 +3,17 @@
  */
 
 class node {
-    constructor(value){
+    constructor(value, next=null){
         this.value = value;
-        this.next = null;
+        this.next = next;
     }
 }
-
 
 class MyLinkedList {
     constructor() {
         this.head = null;
+        this.tail = null;
+        this.count = 0;
     }
 
     /**
@@ -22,23 +23,18 @@ class MyLinkedList {
      */
     get(index) {
         if(index === 0){
-            if(this.head == null){
-                return -1;
-            }else{
-                console.log(`get ${index}: ${this.head.value}`)
-                return this.head.value;
-            }
+            console.log(`get ${index}: ${this.head.value}`)
+            return this.head.value || -1;
+            
         };
-        let curr = this.head, ind=1;
-        while(curr.next != null && ind<index){
+        if(index > this.count-1) return -1;
+        let curr = this.head, ind=0;
+        while(ind<index){
             curr = curr.next;
             ind++;
         }
-        if(curr.next == null){
-            return -1
-        }
-        console.log(`get ${index}: ${curr.next.value}`)
-        return curr.next.value;
+        console.log(`get ${index}: ${curr.value}`)
+        return curr.value;
     }
     /**
      * Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.
@@ -46,10 +42,12 @@ class MyLinkedList {
      * @return {void}
      */
     addAtHead(val) {
-        if(this.head === null) return this.head = new node(val);
-        let temp = this.head;
-        this.head = new node(val);
-        this.head.next = temp;
+        this.head = new node(val, this.head);
+        this.count++;
+        if(this.count===1) this.tail = this.head;
+        console.log('Added: ', val, 'count: ', this.count)
+        console.log('head: ', this.head.value, 'tail: ', this.tail.value);
+        this.print()
         return;
     }
     /**
@@ -59,11 +57,10 @@ class MyLinkedList {
      */
     addAtTail(val) {
         if(this.head === null) return this.addAtHead(val);
-        let curr = this.head;
-        while(curr.next != null){
-            curr = curr.next;
-        }
-        curr.next = new node(val);
+        let temp = new node(val, null);
+        this.tail.next = temp;
+        this.tail=temp; 
+        this.count++;
         return;
     }
     /**
@@ -74,18 +71,18 @@ class MyLinkedList {
      */
     addAtIndex(index, val) {
         if(index === 0) return this.addAtHead(val);
-        let curr = this.head, ind=1;
-        while(curr.next != null && ind<index){
+        if(index === this.count) return this.addAtTail(val);
+        if(index > this.count) return -1;
+
+        let curr = this.head, ind=0;
+        while(curr.next != null && ind<index-1){
             curr = curr.next;
             ind++;
         }
-        if(curr.next == null){
-            curr.next = new node(val);
-        }else{
-            let temp = curr.next;
-            curr.next = new node(val);
-            curr.next.next = temp;
-        }
+        let temp = curr.next;
+        curr.next = new node(val, temp);
+        this.count++;
+        return;
     }
     /**
      * Delete the index-th node in the linked list, if the index is valid.
@@ -95,20 +92,18 @@ class MyLinkedList {
     deleteAtIndex(index) {
         if(index === 0){
             let temp = this.head.next;
-            this.head = temp;
+            this.head = temp
+            this.count--;
             return;
         }
-        let curr = this.head, ind=1;
-        while(curr.next != null && ind<index){
+        let curr = this.head, ind=0;
+        while(curr.next != null && ind<index-1){
             curr = curr.next;
             ind++;
         }
-        if(curr.next == null){
-            curr.next = null;
-        }else{
-            curr.next = curr.next.next;
-        }
-        return;
+        if(curr.next == null) return -1;
+        curr.next = curr.next.next;
+        this.count--;
     }
 
     print(){
@@ -124,6 +119,36 @@ class MyLinkedList {
         values.push(curr.value);
         console.table(values)
     }
-
 }
 
+
+
+/** 
+ * Your MyLinkedList object will be instantiated and called as such:
+ * var obj = new MyLinkedList()
+ * var param_1 = obj.get(index)
+ * obj.addAtHead(val)
+ * obj.addAtTail(val)
+ * obj.addAtIndex(index,val)
+ * obj.deleteAtIndex(index)
+ */
+
+let l = new MyLinkedList();
+l.addAtHead(2);
+l.print()
+l.deleteAtIndex(1);
+l.print()
+l.addAtHead(222);
+l.addAtHead(7);
+l.addAtHead(3);
+l.addAtHead(2);
+l.addAtHead(5);
+console.log(l.tail)
+l.addAtTail(5);
+l.print()
+l.get(5);
+// l.print()
+l.deleteAtIndex(6);
+l.print()
+l.deleteAtIndex(4);
+l.print()
