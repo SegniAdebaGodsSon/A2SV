@@ -10,6 +10,7 @@
  * @return {ListNode}
  */
 
+ // SOLUTION 1
 var reverseList = function(head) {
     let [newHead, tail] = reverseNode(head);
     return newHead;
@@ -23,6 +24,17 @@ let reverseNode = function(head){
 }
 
 
+// SOLUTION 2
+var reverseList2 = function(head){
+    if(head == null || head.next == null) return head;
+    let p = reverseList2(head.next);
+    head.next.next = head;
+    head.next = null;
+    return p;
+}
+
+
+
 class ListNode {
     constructor(val, next) {
         this.val = (val === undefined ? 0 : val);
@@ -32,5 +44,4 @@ class ListNode {
 
 let a = new ListNode(1,new ListNode(2, new ListNode(3, new ListNode(4))));
 
-console.log(reverseList(a));
-
+console.log(reverseList2(a));
