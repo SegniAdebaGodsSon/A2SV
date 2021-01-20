@@ -3,95 +3,114 @@
  */
 
 // SOLUTION 1
-class MinStack {
-    constructor() {
-        this.values = [];
-        this.min = -Infinity;
+/**
+ * initialize your data structure here.
+ */
+var MinStack = function() {
+    this.values = [];
+};
+
+/** 
+ * @param {number} x
+ * @return {void}
+ */
+MinStack.prototype.push = function(x) {
+    if(this.values.length){
+        let min = this.values[this.values.length-1][1] > x ? x : this.values[this.values.length-1][1];
+        this.values.push([x, min])
+        return;
     }
-    /**
-     * @param {number} x
-     * @return {void}
-     */
-    push(x) {
-        if(this.values.length){
-            let min = this.min > x ? x : this.min; 
-            this.min = min;
-            this.values.push([x, this.min]);
-            return;
-        }
-        this.min = x;
-        this.values.push([x, x]);
+    this.values.push([x, x]);
+    return;
+};
+
+/**
+ * @return {void}
+ */
+MinStack.prototype.pop = function() {
+    this.values.pop();
+};
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.top = function() {
+    if(this.values.length){
+        let top = this.values[this.values.length-1][0];
+        return top;
     }
-    /**
-     * @return {void}
-     */
-    pop() {
-        this.values.pop();
-        this.min = this.values[this.values.length-1][1];
+    return;
+};
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.getMin = function() {
+    if(this.values.length){
+        let min = this.values[this.values.length-1][1];
+        return min;
     }
-    /**
-     * @return {number}
-     */
-    top() {
-        return this.values[this.values.length-1][0];
-    }
-    /**
-     * @return {number}
-     */
-    getMin() {
-        return this.min;
-    }
-    print(){
-        console.log('Values: ', this.values);
-        console.log('Min: ', this.min);
-    }
-}
+    return;
+};
+
+/** 
+ * Your MinStack object will be instantiated and called as such:
+ * var obj = new MinStack()
+ * obj.push(x)
+ * obj.pop()
+ * var param_3 = obj.top()
+ * var param_4 = obj.getMin()
+ */
 
 
 
 // SOLUTION 2
-class MinStack1{
-    constructor(){
-        this.mins = [];
+/**
+ * initialize your data structure here.
+ */
+class MinStack {
+    constructor() {
         this.values = [];
-    }
-
-    /**
-     * @param {number} x
-     * @return {void}
-     */
-    push(x) {
-        if(this.mins.length){
-            let min = this.mins[this.mins.length-1] > x ? x : this.mins[this.mins.length-1];
-            this.mins.push(mins);
-            this.push(x);
-            return;
-        }
-        this.mins.push(x);
-        this.values.push(x);
-    }
-    /**
-     * @return {void}
-     */
-    pop() {
-        this.values.pop();
-        this.mins.pop();
-    }
-    /**
-     * @return {number}
-     */
-    top() {
-        return this.values[this.values.length-1];
-    }
-    /**
-     * @return {number}
-     */
-    getMin() {
-        return this.mins[this.mins-1];
+        this.mins = [];
     }
 }
 
+/** 
+ * @param {number} x
+ * @return {void}
+ */
+MinStack.prototype.push = function(x) {
+    if(this.values.length){
+        let min = this.mins[this.mins.length-1] > x ? x : this.mins[this.mins.length-1];
+        this.values.push(x);
+        this.mins.push(min);
+        return;
+    }
+    this.values.push(x);
+    this.mins.push(x);
+};
 
+/**
+ * @return {void}
+ */
+MinStack.prototype.pop = function() {
+    this.values.pop();
+    this.mins.pop();
+};
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.top = function() {
+    return this.values[this.values.length-1];
+};
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.getMin = function() {
+    return this.mins[this.mins.length-1];
+};
 
 /** 
  * Your MinStack object will be instantiated and called as such:
