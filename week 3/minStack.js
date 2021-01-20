@@ -1,4 +1,16 @@
 /**
+ * Solution 1 
+ * TC - O(1)
+ *      O(1)  -  pushing, popping, retrieving top, getting min
+ * 
+ * 
+ * Solution 2 - faster on LeetCode
+ * TC - O(1)
+ *      O(1)  -  pushing, popping, retrieving top, getting min
+ */
+
+
+/**
  * initialize your data structure here.
  */
 
