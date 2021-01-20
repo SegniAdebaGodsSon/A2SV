@@ -24,11 +24,6 @@ var removeDuplicates = function(nums) {
             place++;
         }
     }
-
-    let count = len - place;  
-    while(count){
-        nums.pop();
-        count--;
-    }
+    
     return place;
 };
