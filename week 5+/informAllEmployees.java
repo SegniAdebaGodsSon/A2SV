@@ -29,7 +29,7 @@ class solution{
     public static int informDfs(HashMap<Integer, ArrayList<Integer>> adjList, int currEmp, int[] informTime, int time){
         System.out.println("ID: " + currEmp + "\n" + "time: " + time + "\n");
         if(informTime[currEmp] == 0) return time;
-        int max =time;
+        int max = time;
         for(int subOrd : adjList.get(currEmp)){
             int temp = informDfs(adjList, subOrd, informTime,time + informTime[subOrd]);
             if(temp > max) max = temp;

@@ -64,7 +64,7 @@ class Solution {
         return dd;
     }
 
-    // APPROACH 2 - MORE CONCISE - 4 LINER
+    // APPROACH 2 - MORE CONCISE - 4 LINEAR
     public static int maxDepth2(Node root){
         if(root == null || root.children == null) return root == null ? 0 : 1;
         int res = 1;

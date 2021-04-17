@@ -3,8 +3,8 @@ import java.util.Arrays;
 class Solution {
 
     public static void main(String[] args) {
-//        int[][] grid = {{1,1,0,1,1},{1,0,0,0,0},{0,0,0,0,1},{1,1,0,1,1}};
-//        System.out.println(maxAreaOfIsland(grid));
+        int[][] grid = {{1,1,0,1,1},{1,0,0,0,0},{0,0,0,0,1},{1,1,0,1,1}};
+        System.out.println(maxAreaOfIsland(grid));
 
         System.out.println('a' + "," + 'b');
     }
@@ -22,7 +22,7 @@ class Solution {
 
     public static int dfs(int[][] grid, int[][] dirs, int[] coordinate){
         System.out.println(Arrays.deepToString(grid));
-        int i = coordinate[0], j = coordinate[1], count = 0;
+        int i = coordinate[0], j = coordinate[1], count = 1;
         grid[i][j] = -1;
         int[] neighbor;
         for(int[] dir : dirs){
@@ -31,7 +31,7 @@ class Solution {
                 count += dfs(grid, dirs, neighbor);
             }
         }
-        return count + 1;
+        return count;
     }
 
     public static boolean inBounds(int[][] grid, int[] coordinate){
