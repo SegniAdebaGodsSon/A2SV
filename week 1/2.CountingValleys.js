@@ -1,13 +1,11 @@
 function countingValleys(steps, path) {
     // Write your code here
     path = path.split("");
-    console.log(path)
+//    console.log(path)
     let altitude = 0, valleys = 0;
     path.forEach(step => {
         step==='U' ? altitude+=1 : altitude-=1;
-        if(step === 'U' && altitude == 0){
-            valleys += 1; 
-        }
+        if(step === 'U' && altitude == 0) valleys += 1;
     });
     return valleys;
 }

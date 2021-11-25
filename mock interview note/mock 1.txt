@@ -1,0 +1,7 @@
+- most interesting project you've worked on
+- extracarricullum activities
+- interests in career(future)
+- constraints
+- questions on the questions
+- edge cases
+- implementation detail
